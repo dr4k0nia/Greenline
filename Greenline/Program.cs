@@ -21,7 +21,7 @@ foreach (var type in module.GetAllTypes())
     if (config != null)
         parsedConfig = config;
 
-    if (configOnly)
+    if (!configOnly)
     {
         foreach (var method in type.Methods.Where(m => m.CilMethodBody != null))
         {
