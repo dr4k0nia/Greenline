@@ -7,6 +7,8 @@ Console.WriteLine("Greenline | Redline Stealer String Unpacker by dr4k0nia\nhttp
 
 var module = ModuleDefinition.FromFile(args[0]);
 
+bool configOnly = args.Length == 2 && args[1] == "--config-only";
+
 string? parsedConfig = null;
 
 foreach (var type in module.GetAllTypes())
@@ -19,10 +21,13 @@ foreach (var type in module.GetAllTypes())
     if (config != null)
         parsedConfig = config;
 
-    foreach (var method in type.Methods.Where(m => m.CilMethodBody != null))
+    if (configOnly)
     {
-        CharArrayPatcher.Execute(method);
-        StringReplacePatcher.Execute(method);
+        foreach (var method in type.Methods.Where(m => m.CilMethodBody != null))
+        {
+            CharArrayPatcher.Execute(method);
+            StringReplacePatcher.Execute(method);
+        }
     }
 }
 
