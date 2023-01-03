@@ -1,0 +1,3 @@
+[submodule "Echo"]
+	path = Echo
+	url = https://github.com/Washi1337/Echo.git

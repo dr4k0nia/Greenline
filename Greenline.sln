@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greenline", "Greenline\Greenline.csproj", "{99B8D7A4-2EB9-436E-A4C9-704B0EC07485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Echo.Platforms.AsmResolver", "Echo\src\Platforms\Echo.Platforms.AsmResolver\Echo.Platforms.AsmResolver.csproj", "{AAC70B79-C8AB-478F-9193-92C37A4E5B24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99B8D7A4-2EB9-436E-A4C9-704B0EC07485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99B8D7A4-2EB9-436E-A4C9-704B0EC07485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99B8D7A4-2EB9-436E-A4C9-704B0EC07485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99B8D7A4-2EB9-436E-A4C9-704B0EC07485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAC70B79-C8AB-478F-9193-92C37A4E5B24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAC70B79-C8AB-478F-9193-92C37A4E5B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC70B79-C8AB-478F-9193-92C37A4E5B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC70B79-C8AB-478F-9193-92C37A4E5B24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
