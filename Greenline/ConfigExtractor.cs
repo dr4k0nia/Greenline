@@ -16,6 +16,9 @@ public static class ConfigExtractor
         if (type.GetStaticConstructor() == null || type.Fields.Count != 5)
             return;
 
+        if (!type.HasCustomAttribute("System.Reflection", "ObfuscationAttribute"))
+            return;
+
         // ReSharper disable once SimplifyLinqExpressionUseAll
         if (!type.Fields.Any(f => f.Name == "IP"))
             return;
