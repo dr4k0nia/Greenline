@@ -16,10 +16,8 @@ foreach (var type in module.GetAllTypes())
     if (type.Methods.Count == 0)
         continue;
 
-    ConfigExtractor.TryParseConfig(type, out string? config);
-
-    if (config != null)
-        parsedConfig = config;
+    if (parsedConfig == null)
+        ConfigExtractor.TryParseConfig(type, out parsedConfig);
 
     if (!configOnly)
     {
