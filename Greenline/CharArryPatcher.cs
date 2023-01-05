@@ -32,6 +32,7 @@ public static class CharArrayPatcher
 
             // We are searching for System.String::.ctor(char[])
             if (!constructorDef!.DeclaringType!.IsTypeOf("System", "String")
+                && constructorDef.Signature!.ParameterTypes.Count > 0
                 && constructorDef.Signature!.ParameterTypes[0] is not SzArrayTypeSignature
                 {
                     ElementType: ElementType.Char
