@@ -1,13 +1,18 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using AsmResolver.DotNet;
+using CommandLine;
 using Greenline;
 
 Console.WriteLine("Greenline | Redline Stealer String Unpacker by dr4k0nia\nhttps://github.com/dr4k0nia");
+Args pArgs = Parser.Default.ParseArguments<Args>(args).WithParsed(o => {}).Value;
 
-var module = ModuleDefinition.FromFile(args[0]);
+if (pArgs == null) {
+    Console.ReadKey();
+    return;
+}
 
-bool configOnly = args.Length == 2 && args[1] == "--config-only";
+var module = ModuleDefinition.FromFile(pArgs.ModulePath);
 
 string? parsedConfig = null;
 
@@ -19,10 +24,10 @@ foreach (var type in module.GetAllTypes())
     if (parsedConfig == null)
         ConfigExtractor.TryParseConfig(type, out parsedConfig);
 
-    if (!configOnly)
+    if (!pArgs.ConfigOnly)
     {
-        foreach (var method in type.Methods.Where(m => m.CilMethodBody != null))
-        {
+        foreach (var method in type.Methods.Where(m => m.CilMethodBody != null)) {
+            method.CilMethodBody!.ComputeMaxStackOnBuild = !pArgs.CalculateStack;
             CharArrayPatcher.Execute(method);
             StringReplacePatcher.Execute(method);
         }
