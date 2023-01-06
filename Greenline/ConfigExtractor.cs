@@ -55,8 +55,21 @@ public static class ConfigExtractor
 
     private static string Decrypt(string input, string key)
     {
-        string first = FromBase64(input);
-        return FromBase64(Xor(first, key));
+        bool Base64String = IsBase64String(input);
+        
+       if (IsBase64String(input))
+       {
+           string first = FromBase64(input);
+           return FromBase64(Xor(first, key));
+       }
+       
+       return input;
+    }
+
+    public static bool IsBase64String(string base64)
+    {
+        Span<byte> buffer = new Span<byte>(new byte[base64.Length]);
+        return Convert.TryFromBase64String(base64, buffer, out int _);
     }
 
     private static string FromBase64(string base64Str)
