@@ -47,6 +47,9 @@ public static class StringReplacePatcher
             if (dependencies[2].OpCode == CilOpCodes.Ldstr)
                 replacement = dependencies[2].Operand!.ToString()!;
 
+            if (string.IsNullOrEmpty(pattern))
+                return;
+
             inst.ReplaceWith(CilOpCodes.Ldstr, target.Replace(pattern, replacement));
 
             var toRemove = dependencies.Where(ci => ci.Offset != inst.Offset);
