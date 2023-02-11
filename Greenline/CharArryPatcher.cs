@@ -52,7 +52,7 @@ public static class CharArrayPatcher
             char[] array = new char[dependencies.First(ci => ci.IsLdcI4()).GetLdcI4Constant()];
 
             var reader = segment.CreateReader();
-            for (int index = 0; index < array.Length - 1; index++)
+            for (int index = 0; index < array.Length; index++)
             {
                 array[index] = (char) reader.ReadInt16();
             }
