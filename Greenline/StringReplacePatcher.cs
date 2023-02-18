@@ -48,7 +48,12 @@ public static class StringReplacePatcher
                 replacement = dependencies[2].Operand!.ToString()!;
 
             if (string.IsNullOrEmpty(pattern))
-                return;
+                continue;
+
+            // Cheap fix to avoid patching already fixed strings like "Web Data"
+            // Thanks to c3rb3ru5 for discovering this issue
+            if (pattern.Contains((char)0x20))
+                continue;
 
             inst.ReplaceWith(CilOpCodes.Ldstr, target.Replace(pattern, replacement));
 
